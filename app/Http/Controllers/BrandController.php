@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PhoneBrand;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class BrandController extends Controller
 {
@@ -89,9 +90,16 @@ class BrandController extends Controller
         $brand->country = $request->country;
 
         if ($request->hasFile('logo')) {
+            // Xóa ảnh hiển thị
+            $filePath = public_path($brand->logo);
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+            // Upload ảnh mới
             $file = $request->file('logo');
             $randomFileName = $file->hashName();
             $file->move(public_path('uploads/brand'), $randomFileName);
+            
             $brand->logo = 'uploads/brand/' . $randomFileName;
         }
 
@@ -105,10 +113,15 @@ class BrandController extends Controller
      */
     public function destroy(int $id)
     {
-        $data = PhoneBrand::find($id);
-        if(!empty($data)) {
-            Storage::disk('public')->delete($data->logo);
-            $data->delete();
+        $brand = PhoneBrand::find($id);
+        if(!empty($brand)) {
+            // Xóa ảnh hiển thị
+            $filePath = public_path($brand->logo);
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+
+            $brand->delete();
             return back()->with('success', 'Đã xóa dữ liệu này thành công');
  
         } else {

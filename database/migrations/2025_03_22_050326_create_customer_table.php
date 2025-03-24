@@ -23,37 +23,37 @@ return new class extends Migration
             [
                 'name' => 'OnePlus',
                 'country' => 'China',
-                'logo' => 'brand/OnePlus42-b_36.jpg',
+                'logo' => 'uploads/brand/OnePlus42-b_36.jpg',
             ],
             [
                 'name' => 'Oppo',
                 'country' => 'China',
-                'logo' => 'brand/Oppo.jpg',
+                'logo' => 'uploads/brand/Oppo.jpg',
             ],
             [
                 'name' => 'Samsung',
                 'country' => 'South Korea',
-                'logo' => 'brand/Samsung.jpg',
+                'logo' => 'uploads/brand/Samsung.jpg',
             ],
             [
                 'name' => 'Vsmart',
                 'country' => 'Vietnam',
-                'logo' => 'brand/Vsmart.jpg',
+                'logo' => 'uploads/brand/Vsmart.jpg',
             ],
             [
                 'name' => 'iPhone',
                 'country' => 'USA',
-                'logo' => 'brand/iPhone.jpg',
+                'logo' => 'uploads/brand/iPhone.jpg',
             ],
             [
                 'name' => 'Masstel',
                 'country' => 'Vietnam',
-                'logo' => 'brand/Masstel42-b_0.png',
+                'logo' => 'uploads/brand/Masstel42-b_0.png',
             ],
             [
                 'name' => 'Nokia',
                 'country' => 'Finland',
-                'logo' => 'brand/Nokia.jpg',
+                'logo' => 'uploads/brand/Nokia.jpg',
             ],
         ]);
     }

@@ -35,11 +35,14 @@ class BrandController extends Controller
             'country'   => 'required|max:50',
             'logo'      => 'required'
         ]);
-        $path = $request->file('logo')->store('brand', 'public');
+        $file = $request->file('logo');
+        $randomFileName = $file->hashName();
+        $file->move(public_path('uploads/brand'), $randomFileName);
+
         PhoneBrand::create([
             'name'      => $request->name,
             'country'   => $request->country,
-            'logo'      => $path
+            'logo'      => 'uploads/brand/' . $randomFileName
         ]);
         return redirect()->route('index')->with('success', 'Bạn đã thêm dữ liệu thành công');
     }
@@ -86,8 +89,10 @@ class BrandController extends Controller
         $brand->country = $request->country;
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('brand', 'public');
-            $brand->logo = $path;
+            $file = $request->file('logo');
+            $randomFileName = $file->hashName();
+            $file->move(public_path('uploads/brand'), $randomFileName);
+            $brand->logo = 'uploads/brand/' . $randomFileName;
         }
 
         $brand->save();

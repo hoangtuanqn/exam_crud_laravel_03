@@ -42,7 +42,7 @@
                                 <td>{{ $brand->name }}</td>
                                 <td>{{ $brand->country }}</td>
                                 <td>
-                                    <img src="/storage/{{ $brand->logo }}" alt="{{ $brand->name }}" class="image_brand"/>
+                                    <img src="/{{ $brand->logo }}" alt="{{ $brand->name }}" class="image_brand"/>
                                 </td>
                                 <td class="action">
                                     <a href="{{ route('edit', ['id' => $brand->pbid]) }}">Modify</a> |
